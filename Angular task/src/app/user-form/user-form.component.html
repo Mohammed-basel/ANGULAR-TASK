@@ -1,0 +1,48 @@
+<div>
+
+    <form #form =ngForm (ngSubmit) ="addUser(form)">
+  
+  <br>
+    <label for="name">Name </label><br>
+    <input  [(ngModel)]="newUser.name" name="name" required type="text">
+    <span *ngIf="form.form.controls['name']?.touched && ! form.form.controls['name']?.valid" class="error">  Field required </span><br>
+  <br>
+  
+    
+    <label for="age">Age</label><br>
+    <input [(ngModel)]="newUser.age" name="age" type="number" ><br>
+  <br>
+    <button type="submit"> Add A User</button>
+  </form>
+  </div>
+  
+  <br>
+  
+  <div class="center">
+  <table border="3" >
+    
+    <thead>
+      <tr>
+     <th>   User Name  </th> 
+     <th>  User Age  </th> 
+    </tr>
+    </thead>
+  
+    <tbody>
+  <tr *ngFor="let user of UserList ; let i = index">
+    <td>
+      {{i}}
+    </td>
+    <td>
+      {{user.name}}
+    </td>
+    <td>
+      {{user.age}}
+    </td>
+   
+    <td><button (click)="deleteUser(user)">Delete User</button></td>
+  </tr>
+    </tbody>
+  </table>
+  
+  </div>
